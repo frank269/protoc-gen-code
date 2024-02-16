@@ -1,8 +1,8 @@
 package main
 
 import (
-	modules "protoc-gen-code/modules"
-	processors "protoc-gen-code/processors"
+	modules "github.com/frank269/protoc-gen-code/modules"
+	processors "github.com/frank269/protoc-gen-code/processors"
 
 	pgs "github.com/lyft/protoc-gen-star/v2"
 	pgsgo "github.com/lyft/protoc-gen-star/v2/lang/go"

@@ -1,4 +1,4 @@
-module protoc-gen-code
+module github.com/frank269/protoc-gen-code
 
 go 1.21.3
 
