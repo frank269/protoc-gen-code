@@ -4,5 +4,3 @@
 generated/
 bin/
 vendor/
-**/*.pb.go
-**/code_generator_request.pb.bin
