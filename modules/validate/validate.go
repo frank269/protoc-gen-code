@@ -1,7 +1,8 @@
-package modules
+package validate
 
 import (
-	"github.com/envoyproxy/protoc-gen-validate/templates"
+	"text/template"
+
 	pgs "github.com/lyft/protoc-gen-star/v2"
 	pgsgo "github.com/lyft/protoc-gen-star/v2/lang/go"
 )
@@ -34,10 +35,10 @@ func (m *validateModule) Execute(targets map[string]pgs.File, packages map[strin
 }
 
 func (m *validateModule) gen(f pgs.File) {
-	if len(f.Services()) == 0 || templates.Template(m.Parameters())["go"] == nil || len(templates.Template(m.Parameters())["go"]) == 0 {
+	if len(f.Services()) == 0 {
 		return
 	}
 
 	name := m.ctx.OutputPath(f).SetBase(f.InputPath().BaseName()).SetExt(".validate.pb.go")
-	m.AddGeneratorTemplateFile(name.String(), templates.Template(m.Parameters())["go"][0], f)
+	m.AddGeneratorTemplateFile(name.String(), Register(template.New("validate"), m.Parameters()), f)
 }

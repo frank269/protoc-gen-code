@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+import "google/protobuf/descriptor.proto";
+
+package extension;
+option go_package = "github.com/frank269/protoc-gen-code/proto/extension;extension";
+
+extend google.protobuf.MessageOptions {
+    optional bool enabled = 40001;
+}
+
+extend google.protobuf.FieldOptions {
+    EnviromentOptions env = 50000;
+}
+
+message EnviromentOptions {
+    string name = 1;
+    string defaultValue = 2;
+}
